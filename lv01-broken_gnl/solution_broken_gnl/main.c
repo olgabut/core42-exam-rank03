@@ -12,20 +12,16 @@ int main(void)
 {
 	int fd;
 	char *str;
+	int i;
 	
-	fd = open("test.txt", O_RDONLY);
-	str = get_next_line(fd);
-	printf("1 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("2 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("3 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("4 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("5 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("6 NEXT_LINE = '%s'\n", str);
-	str = get_next_line(fd);
-	printf("7 NEXT_LINE = '%s'\n", str);
+	fd = open("files/with_nl", O_RDONLY);
+	i = 1;
+	while (1)
+	{
+		str = get_next_line(fd);
+		printf("%d NEXT_LINE = '%s'\n", i, str);
+		if (str == NULL)
+			break;
+		i++;
+	}
 }
